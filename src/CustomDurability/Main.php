@@ -26,7 +26,7 @@ class Main extends PluginBase implements Listener {
             $armorInventory = $entity->getArmorInventory();
             foreach ($armorInventory->getContents() as $slot => $item) {
                 if ($item instanceof Armor) {
-                    $type = $item->getArmorType();
+                    $type = $item->armorType; // Utilisez la propriété armorType au lieu de la méthode getArmorType()
                     $customDurability = $this->config->get($type . "_durability", 100);
                     $newDurability = max(0, $item->getMaxDurability() - $event->getFinalDamage() * $customDurability);
                     $item->setDamage($newDurability);
