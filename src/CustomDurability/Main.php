@@ -7,19 +7,20 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\Armor;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\Player; // N'oubliez pas d'importer la classe Player
 
 class Main extends PluginBase implements Listener {
 
     /** @var Config */
     private $config;
 
-    public function onEnable() {
+    public function onEnable(): void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->saveDefaultConfig();
         $this->config = $this->getConfig();
     }
 
-    public function onDamage(EntityDamageEvent $event) {
+    public function onDamage(EntityDamageEvent $event): void {
         $entity = $event->getEntity();
         if ($entity instanceof Player) {
             $armorInventory = $entity->getArmorInventory();
