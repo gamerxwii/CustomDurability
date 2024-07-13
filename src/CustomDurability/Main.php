@@ -7,7 +7,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\Armor;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use pocketmine\Player; // N'oubliez pas d'importer la classe Player
+use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
 
@@ -27,9 +27,7 @@ class Main extends PluginBase implements Listener {
             foreach ($armorInventory->getContents() as $slot => $item) {
                 if ($item instanceof Armor) {
                     $type = $item->getArmorType();
-                    // Récupérer la durabilité personnalisée depuis le config.yml
-                    $customDurability = $this->config->get($type . "_durability", 100); // Valeur par défaut : 100
-                    // Ajuster la durabilité en fonction des dégâts
+                    $customDurability = $this->config->get($type . "_durability", 100);
                     $newDurability = max(0, $item->getMaxDurability() - $event->getFinalDamage() * $customDurability);
                     $item->setDamage($newDurability);
                     $armorInventory->setItem($slot, $item);
