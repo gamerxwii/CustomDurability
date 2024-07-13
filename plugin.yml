@@ -1,5 +1,5 @@
 name: CustomArmorDurability
 version: 1.0.0
 api: [5.0.0, 5.3.0]
-author: VotreNom
-main: VotrePlugin\Main
+author: Gamerxwii
+main: CustomDurability\Main
